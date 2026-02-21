@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGICZ – Block Puzzle</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #1a0f0a;
+      color: #efe6dd;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      background: linear-gradient(135deg, #2b1b17 0%, #3e2723 100%);
+      border-bottom: 2px solid rgba(239,230,221,0.2);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 8px;
+      color: #efe6dd;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    header p {
+      font-size: 1rem;
+      letter-spacing: 4px;
+      color: rgba(239,230,221,0.6);
+      margin-top: 8px;
+    }
+    .hero {
+      width: 100%;
+      max-width: 700px;
+      padding: 60px 24px 40px;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #efe6dd;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: rgba(239,230,221,0.7);
+      line-height: 1.7;
+    }
+    .cards {
+      width: 100%;
+      max-width: 700px;
+      padding: 20px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card {
+      background: rgba(239,230,221,0.07);
+      border: 1.5px solid rgba(239,230,221,0.15);
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-decoration: none;
+      color: #efe6dd;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .card:hover {
+      background: rgba(239,230,221,0.12);
+      border-color: rgba(239,230,221,0.3);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .card-text h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .card-text p {
+      font-size: 0.9rem;
+      color: rgba(239,230,221,0.6);
+      line-height: 1.5;
+    }
+    .card.privacy .card-icon { color: #4caf50; }
+    .card.terms   .card-icon { color: #2196f3; }
+    .card.delete  .card-icon { color: #f44336; }
+    footer {
+      margin-top: auto;
+      padding: 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(239,230,221,0.35);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LOGICZ</h1>
+    <p>BLOCK PUZZLE</p>
+  </header>
+
+  <div class="hero">
+    <h2>Legal &amp; Support</h2>
+    <p>Welcome to the LOGICZ support page. Here you can find our Privacy Policy, Terms of Service, and instructions for deleting your account and data.</p>
+  </div>
+
+  <div class="cards">
+    <a href="privacy-policy.html" class="card privacy">
+      <div class="card-icon">🔒</div>
+      <div class="card-text">
+        <h3>Privacy Policy</h3>
+        <p>Learn how we collect, use, and protect your personal data.</p>
+      </div>
+    </a>
+
+    <a href="terms-of-service.html" class="card terms">
+      <div class="card-icon">📋</div>
+      <div class="card-text">
+        <h3>Terms of Service</h3>
+        <p>Read the terms and conditions that govern your use of LOGICZ.</p>
+      </div>
+    </a>
+
+    <a href="delete-account.html" class="card delete">
+      <div class="card-icon">🗑️</div>
+      <div class="card-text">
+        <h3>Delete Account &amp; Data</h3>
+        <p>Request deletion of your account and all associated data.</p>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2024 LOGICZ. All rights reserved.
+  </footer>
+</body>
+</html>
