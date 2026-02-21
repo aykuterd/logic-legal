@@ -6,287 +6,234 @@
   <title>Delete Account – LOGICZ</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #1a0f0a;
-      color: #efe6dd;
-      min-height: 100vh;
-    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a0f0a; color: #efe6dd; min-height: 100vh; }
+
     header {
       width: 100%;
       background: linear-gradient(135deg, #2b1b17 0%, #3e2723 100%);
       border-bottom: 2px solid rgba(239,230,221,0.2);
-      padding: 24px;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    header a {
-      color: rgba(239,230,221,0.6);
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    header a.back { color: rgba(239,230,221,0.6); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; }
+    header a.back:hover { color: #efe6dd; }
+    header span.logo { font-size: 1.3rem; font-weight: 900; letter-spacing: 4px; }
+
+    .lang-toggle {
+      display: flex;
+      background: rgba(239,230,221,0.08);
+      border: 1.5px solid rgba(239,230,221,0.2);
+      border-radius: 30px;
+      overflow: hidden;
     }
-    header a:hover { color: #efe6dd; }
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 4px;
+    .lang-toggle button {
+      background: none; border: none; color: rgba(239,230,221,0.55);
+      padding: 7px 18px; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
     }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-    .page-title {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      margin-bottom: 8px;
-      color: #ef9a9a;
-    }
-    .subtitle {
-      font-size: 0.85rem;
-      color: rgba(239,230,221,0.5);
-      margin-bottom: 40px;
-    }
+    .lang-toggle button.active { background: rgba(239,230,221,0.2); color: #efe6dd; }
+
+    .container { max-width: 700px; margin: 0 auto; padding: 44px 24px 80px; }
+    .page-title { font-size: 1.9rem; font-weight: 900; letter-spacing: 4px; margin-bottom: 6px; color: #ef9a9a; }
+    .subtitle { font-size: 0.82rem; color: rgba(239,230,221,0.45); margin-bottom: 32px; }
+
     .warning-box {
-      background: rgba(244, 67, 54, 0.1);
-      border: 1.5px solid rgba(244, 67, 54, 0.35);
+      background: rgba(244,67,54,0.1);
+      border: 1.5px solid rgba(244,67,54,0.32);
       border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 40px;
+      padding: 22px 26px;
+      margin-bottom: 36px;
     }
-    .warning-box h3 {
-      font-size: 1rem;
-      font-weight: 800;
-      color: #ef9a9a;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-    .warning-box ul {
-      margin-left: 18px;
-      color: rgba(239,230,221,0.8);
-      font-size: 0.95rem;
-      line-height: 2;
-    }
-    section { margin-bottom: 40px; }
-    h2 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #efe6dd;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(239,230,221,0.15);
-    }
-    p {
-      font-size: 0.97rem;
-      color: rgba(239,230,221,0.82);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin: 16px 0;
-    }
+    .warning-box h3 { font-size: 0.95rem; font-weight: 800; color: #ef9a9a; margin-bottom: 12px; letter-spacing: 1px; }
+    .warning-box ul { margin-left: 18px; color: rgba(239,230,221,0.8); font-size: 0.94rem; line-height: 2; }
+
+    section { margin-bottom: 36px; }
+    h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(239,230,221,0.14); }
+    p { font-size: 0.96rem; color: rgba(239,230,221,0.82); line-height: 1.85; margin-bottom: 10px; }
+
+    .steps { display: flex; flex-direction: column; gap: 12px; margin: 14px 0; }
     .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      background: rgba(239,230,221,0.06);
-      border: 1px solid rgba(239,230,221,0.12);
-      border-radius: 12px;
-      padding: 16px 20px;
+      display: flex; align-items: flex-start; gap: 16px;
+      background: rgba(239,230,221,0.06); border: 1px solid rgba(239,230,221,0.11);
+      border-radius: 12px; padding: 15px 18px;
     }
     .step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(239,230,221,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-      color: #efe6dd;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(239,230,221,0.14);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.88rem; flex-shrink: 0;
     }
-    .step-text h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .step-text p {
-      font-size: 0.88rem;
-      color: rgba(239,230,221,0.6);
-      margin: 0;
-    }
+    .step-text h4 { font-size: 0.93rem; font-weight: 700; margin-bottom: 3px; }
+    .step-text p { font-size: 0.86rem; color: rgba(239,230,221,0.58); margin: 0; }
+
     .email-btn {
       display: inline-block;
-      background: rgba(244, 67, 54, 0.15);
-      border: 1.5px solid rgba(244, 67, 54, 0.4);
-      color: #ef9a9a;
-      text-decoration: none;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      font-size: 0.95rem;
+      background: rgba(244,67,54,0.13);
+      border: 1.5px solid rgba(244,67,54,0.38);
+      color: #ef9a9a; text-decoration: none;
+      padding: 13px 28px; border-radius: 12px;
+      font-weight: 800; letter-spacing: 2px; font-size: 0.92rem;
       transition: background 0.2s, border-color 0.2s;
-      margin-top: 8px;
+      margin-top: 10px; display: inline-block;
     }
-    .email-btn:hover {
-      background: rgba(244, 67, 54, 0.25);
-      border-color: rgba(244, 67, 54, 0.6);
-    }
-    a.link { color: #81c784; text-decoration: none; }
-    a.link:hover { text-decoration: underline; }
-    hr { border-color: rgba(239,230,221,0.1); margin: 48px 0 40px; }
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: rgba(239,230,221,0.3);
-      border-top: 1px solid rgba(239,230,221,0.1);
-    }
+    .email-btn:hover { background: rgba(244,67,54,0.22); border-color: rgba(244,67,54,0.55); }
+
+    footer { text-align: center; padding: 22px; font-size: 0.78rem; color: rgba(239,230,221,0.28); border-top: 1px solid rgba(239,230,221,0.08); }
+
+    [data-lang] { display: none; }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html">← Home</a>
-    <h1>LOGICZ</h1>
+    <div class="header-left">
+      <a href="index.html" class="back">← <span data-lang="en">Home</span><span data-lang="tr">Ana Sayfa</span></a>
+      <span class="logo">LOGICZ</span>
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-tr" onclick="setLang('tr')">TR</button>
+    </div>
   </header>
 
   <div class="container">
-    <div class="page-title">DELETE ACCOUNT &amp; DATA</div>
-    <div class="subtitle">Data deletion request page for LOGICZ – Block Puzzle</div>
 
-    <div class="warning-box">
-      <h3>⚠️ THIS ACTION IS PERMANENT</h3>
-      <ul>
-        <li>All your scores will be permanently deleted from all leaderboards</li>
-        <li>Your game profile, username, and statistics will be erased</li>
-        <li>Your challenge history and achievements will be removed</li>
-        <li>Your account cannot be recovered after deletion</li>
-      </ul>
+    <!-- ═══ ENGLISH ═══ -->
+    <div data-lang="en">
+      <div class="page-title">DELETE ACCOUNT &amp; DATA</div>
+      <div class="subtitle">Data deletion request page · LOGICZ – Block Puzzle</div>
+
+      <div class="warning-box">
+        <h3>⚠️ THIS ACTION IS PERMANENT</h3>
+        <ul>
+          <li>All your scores will be permanently deleted from all leaderboards</li>
+          <li>Your profile, username, and statistics will be erased</li>
+          <li>Your challenge history and achievements will be removed</li>
+          <li>Your account cannot be recovered after deletion</li>
+        </ul>
+      </div>
+
+      <section>
+        <h2>METHOD 1 – DELETE IN-APP (RECOMMENDED)</h2>
+        <p>The fastest way to delete your account and all data is directly in the game:</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><h4>Open LOGICZ</h4><p>Launch the game on your device</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><h4>Go to Settings</h4><p>Tap the Settings icon from the main menu</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><h4>Tap "Delete Account"</h4><p>Scroll down to find the red "Delete Account" button</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text"><h4>Confirm Deletion</h4><p>Confirm in the dialog — all data will be immediately and permanently deleted</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>METHOD 2 – EMAIL REQUEST</h2>
+        <p>If you cannot access the app, send us an email with your registered email address or username. We will process your request within 7 business days.</p>
+        <a href="mailto:aykuterd@gmail.com?subject=Account%20Deletion%20Request%20-%20LOGICZ&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20LOGICZ%20account%20and%20all%20associated%20data.%0A%0ARegistered%20Email%3A%20%0AUsername%20(if%20any)%3A%20%0A%0AThank%20you." class="email-btn">
+          📧 SEND DELETION REQUEST
+        </a>
+      </section>
+
+      <section>
+        <h2>WHAT GETS DELETED</h2>
+        <ul style="margin-left:20px; line-height:2; color:rgba(239,230,221,0.8);">
+          <li>Firebase Authentication account</li>
+          <li>All leaderboard scores (normal, daily, time attack, target)</li>
+          <li>User profile (username, email, statistics)</li>
+          <li>Challenge history and achievements</li>
+          <li>All local game data on the device</li>
+        </ul>
+      </section>
     </div>
 
-    <section>
-      <h2>METHOD 1 – DELETE IN-APP (RECOMMENDED)</h2>
-      <p>The fastest way to delete your account and all data is directly through the game:</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-text">
-            <h4>Open LOGICZ</h4>
-            <p>Launch the game on your device</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-text">
-            <h4>Go to Settings</h4>
-            <p>Tap the Settings icon from the main menu</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-text">
-            <h4>Tap "Delete Account"</h4>
-            <p>Scroll down to find the "Delete Account" button (red)</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-text">
-            <h4>Confirm Deletion</h4>
-            <p>Confirm in the dialog — all data will be immediately and permanently deleted</p>
-          </div>
-        </div>
+    <!-- ═══ TURKISH ═══ -->
+    <div data-lang="tr">
+      <div class="page-title">HESAP &amp; VERİ SİLME</div>
+      <div class="subtitle">Veri silme talep sayfası · LOGICZ – Blok Bulmaca</div>
+
+      <div class="warning-box">
+        <h3>⚠️ BU İŞLEM GERİ ALINAMAZ</h3>
+        <ul>
+          <li>Tüm skorlarınız tüm liderlik tablolarından kalıcı olarak silinir</li>
+          <li>Profiliniz, kullanıcı adınız ve istatistikleriniz silinir</li>
+          <li>Görev geçmişiniz ve başarımlarınız kaldırılır</li>
+          <li>Silme işleminden sonra hesabınız kurtarılamaz</li>
+        </ul>
       </div>
-    </section>
 
-    <section>
-      <h2>METHOD 2 – EMAIL REQUEST</h2>
-      <p>If you cannot access the app or prefer to request deletion by email, contact us. Include your registered email address or username in the request. We will process your request within 7 business days.</p>
-      <a href="mailto:aykuterd@gmail.com?subject=Account%20Deletion%20Request%20-%20LOGICZ&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20LOGICZ%20account%20and%20all%20associated%20data.%0A%0ARegistered%20Email%3A%20%0AUsername%20(if%20any)%3A%20%0A%0AThank%20you." class="email-btn">
-        📧 SEND DELETION REQUEST
-      </a>
-    </section>
+      <section>
+        <h2>YÖNTEM 1 – UYGULAMA İÇİNDEN SİL (ÖNERİLEN)</h2>
+        <p>Hesabınızı ve tüm verilerinizi silmenin en hızlı yolu doğrudan oyun üzerinden:</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><h4>LOGICZ'i Aç</h4><p>Oyunu cihazınızda başlatın</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><h4>Ayarlar'a Git</h4><p>Ana menüden Ayarlar ikonuna dokunun</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><h4>"Hesabı Sil"e Dokun</h4><p>Aşağı kaydırarak kırmızı "Hesabı Sil" butonunu bulun</p></div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text"><h4>Silmeyi Onayla</h4><p>Dialogda onaylayın — tüm verileriniz anında ve kalıcı olarak silinir</p></div>
+          </div>
+        </div>
+      </section>
 
-    <section>
-      <h2>WHAT GETS DELETED</h2>
-      <p>Upon account deletion, the following data is permanently removed:</p>
-      <ul style="margin-left: 20px; line-height: 2; color: rgba(239,230,221,0.8);">
-        <li>Firebase Authentication account</li>
-        <li>All leaderboard scores (normal, daily, time attack, target)</li>
-        <li>User profile (username, email, statistics)</li>
-        <li>Challenge history and achievements</li>
-        <li>Local game data on the device</li>
-      </ul>
-    </section>
+      <section>
+        <h2>YÖNTEM 2 – E-POSTA İLE TALEP</h2>
+        <p>Uygulamaya erişemiyorsanız, kayıtlı e-posta adresiniz veya kullanıcı adınızla birlikte bize e-posta gönderin. Talebinizi 7 iş günü içinde işleme alacağız.</p>
+        <a href="mailto:aykuterd@gmail.com?subject=Hesap%20Silme%20Talebi%20-%20LOGICZ&body=Merhaba%2C%0A%0ALOGICZ%20hesab%C4%B1m%C4%B1n%20ve%20t%C3%BCm%20ilgili%20verilerimin%20silinmesini%20talep%20ediyorum.%0A%0AKay%C4%B1tl%C4%B1%20E-posta%3A%20%0AKullan%C4%B1c%C4%B1%20Ad%C4%B1%3A%20%0A%0ATE%C5%9Ekk%C3%BCrler." class="email-btn">
+          📧 SİLME TALEBİ GÖNDER
+        </a>
+      </section>
 
-    <hr />
-
-    <div class="page-title" style="font-size: 1.5rem; margin-bottom: 8px;">HESAP & VERİ SİLME</div>
-    <div class="subtitle">LOGICZ – Blok Bulmaca veri silme talep sayfası</div>
-
-    <div class="warning-box" style="margin-top: 32px;">
-      <h3>⚠️ BU İŞLEM GERİ ALINAMAZ</h3>
-      <ul>
-        <li>Tüm skorlarınız tüm liderlik tablolarından kalıcı olarak silinir</li>
-        <li>Oyun profiliniz, kullanıcı adınız ve istatistikleriniz silinir</li>
-        <li>Görev geçmişiniz ve başarımlarınız kaldırılır</li>
-        <li>Silinme sonrası hesabınız kurtarılamaz</li>
-      </ul>
+      <section>
+        <h2>NE SİLİNİR</h2>
+        <ul style="margin-left:20px; line-height:2; color:rgba(239,230,221,0.8);">
+          <li>Firebase Authentication hesabı</li>
+          <li>Tüm liderlik tablosu skorları (normal, günlük, zamana karşı, hedef)</li>
+          <li>Kullanıcı profili (kullanıcı adı, e-posta, istatistikler)</li>
+          <li>Görev geçmişi ve başarımlar</li>
+          <li>Cihazdaki tüm yerel oyun verileri</li>
+        </ul>
+      </section>
     </div>
 
-    <section style="margin-top: 32px;">
-      <h2>YÖNTEM 1 – UYGULAMA İÇİNDEN SİL (ÖNERİLEN)</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-text">
-            <h4>LOGICZ'i Aç</h4>
-            <p>Oyunu cihazınızda başlatın</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-text">
-            <h4>Ayarlar'a Git</h4>
-            <p>Ana menüden Ayarlar ikonuna dokunun</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-text">
-            <h4>"Hesabı Sil"e Dokun</h4>
-            <p>Aşağı kaydırarak kırmızı "Hesabı Sil" butonunu bulun</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-text">
-            <h4>Silmeyi Onayla</h4>
-            <p>Dialogda onaylayın — tüm verileriniz anında ve kalıcı olarak silinir</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>YÖNTEM 2 – E-POSTA İLE TALEP</h2>
-      <p>Uygulamaya erişemiyorsanız veya e-posta ile talep etmeyi tercih ediyorsanız bizimle iletişime geçin. Talebinize kayıtlı e-posta adresinizi veya kullanıcı adınızı ekleyin. Talebinizi 7 iş günü içinde işleme alacağız.</p>
-      <a href="mailto:aykuterd@gmail.com?subject=Hesap%20Silme%20Talebi%20-%20LOGICZ&body=Merhaba%2C%0A%0ALOGICZ%20hesab%C4%B1m%C4%B1n%20ve%20t%C3%BCm%20ilgili%20verilerimin%20silinmesini%20talep%20ediyorum.%0A%0AKayıtlı%20E-posta%3A%20%0AKullanıcı%20Adı%3A%20%0A%0ATeşekkürler." class="email-btn">
-        📧 SİLME TALEBİ GÖNDER
-      </a>
-    </section>
   </div>
 
   <footer>&copy; 2024 LOGICZ. All rights reserved.</footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+      localStorage.setItem('logicz-lang', lang);
+    }
+    const saved = localStorage.getItem('logicz-lang') ||
+      (navigator.language.startsWith('tr') ? 'tr' : 'en');
+    setLang(saved);
+  </script>
 </body>
 </html>

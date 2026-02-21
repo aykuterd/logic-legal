@@ -6,198 +6,212 @@
   <title>Terms of Service – LOGICZ</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #1a0f0a;
-      color: #efe6dd;
-      min-height: 100vh;
-    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a0f0a; color: #efe6dd; min-height: 100vh; }
+
     header {
       width: 100%;
       background: linear-gradient(135deg, #2b1b17 0%, #3e2723 100%);
       border-bottom: 2px solid rgba(239,230,221,0.2);
-      padding: 24px;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    header a {
-      color: rgba(239,230,221,0.6);
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    header a.back { color: rgba(239,230,221,0.6); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; }
+    header a.back:hover { color: #efe6dd; }
+    header span.logo { font-size: 1.3rem; font-weight: 900; letter-spacing: 4px; }
+
+    .lang-toggle {
+      display: flex;
+      background: rgba(239,230,221,0.08);
+      border: 1.5px solid rgba(239,230,221,0.2);
+      border-radius: 30px;
+      overflow: hidden;
     }
-    header a:hover { color: #efe6dd; }
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 4px;
+    .lang-toggle button {
+      background: none; border: none; color: rgba(239,230,221,0.55);
+      padding: 7px 18px; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
     }
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-    .page-title {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      margin-bottom: 8px;
-    }
-    .last-updated {
-      font-size: 0.85rem;
-      color: rgba(239,230,221,0.5);
-      margin-bottom: 40px;
-    }
-    section { margin-bottom: 40px; }
-    h2 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #efe6dd;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(239,230,221,0.15);
-    }
-    p {
-      font-size: 0.97rem;
-      color: rgba(239,230,221,0.82);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-    ul {
-      margin: 8px 0 12px 20px;
-      color: rgba(239,230,221,0.82);
-      line-height: 1.9;
-      font-size: 0.97rem;
-    }
+    .lang-toggle button.active { background: rgba(239,230,221,0.2); color: #efe6dd; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 44px 24px 80px; }
+    .page-title { font-size: 1.9rem; font-weight: 900; letter-spacing: 4px; margin-bottom: 6px; }
+    .last-updated { font-size: 0.82rem; color: rgba(239,230,221,0.45); margin-bottom: 38px; }
+
+    section { margin-bottom: 38px; }
+    h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(239,230,221,0.14); }
+    p { font-size: 0.96rem; color: rgba(239,230,221,0.82); line-height: 1.85; margin-bottom: 10px; }
+    ul { margin: 6px 0 10px 20px; color: rgba(239,230,221,0.82); line-height: 2; font-size: 0.96rem; }
     a { color: #64b5f6; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.8rem;
-      color: rgba(239,230,221,0.3);
-      border-top: 1px solid rgba(239,230,221,0.1);
-    }
+
+    footer { text-align: center; padding: 22px; font-size: 0.78rem; color: rgba(239,230,221,0.28); border-top: 1px solid rgba(239,230,221,0.08); }
+
+    [data-lang] { display: none; }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html">← Home</a>
-    <h1>LOGICZ</h1>
+    <div class="header-left">
+      <a href="index.html" class="back">← <span data-lang="en">Home</span><span data-lang="tr">Ana Sayfa</span></a>
+      <span class="logo">LOGICZ</span>
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-tr" onclick="setLang('tr')">TR</button>
+    </div>
   </header>
 
   <div class="container">
-    <div class="page-title">TERMS OF SERVICE</div>
-    <div class="last-updated">Last updated: February 2024</div>
 
-    <section>
-      <h2>1. ACCEPTANCE OF TERMS</h2>
-      <p>By downloading, installing, or using LOGICZ – Block Puzzle ("the Game"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Game.</p>
-    </section>
+    <!-- ═══ ENGLISH ═══ -->
+    <div data-lang="en">
+      <div class="page-title">TERMS OF SERVICE</div>
+      <div class="last-updated">Last updated: February 2024</div>
 
-    <section>
-      <h2>2. USE OF THE GAME</h2>
-      <p>You may use the Game for personal, non-commercial entertainment purposes only. You agree not to:</p>
-      <ul>
-        <li>Cheat, hack, or manipulate game data or leaderboards</li>
-        <li>Use automated bots or scripts to interact with the Game</li>
-        <li>Attempt to reverse-engineer or modify the Game</li>
-        <li>Use offensive, harmful, or inappropriate usernames</li>
-        <li>Violate any applicable laws or regulations while using the Game</li>
-      </ul>
-    </section>
+      <section>
+        <h2>1. ACCEPTANCE OF TERMS</h2>
+        <p>By downloading, installing, or using LOGICZ – Block Puzzle ("the Game"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Game.</p>
+      </section>
 
-    <section>
-      <h2>3. USER ACCOUNTS</h2>
-      <p>You may play anonymously without creating an account. If you create an account:</p>
-      <ul>
-        <li>You are responsible for maintaining the security of your password</li>
-        <li>You agree to provide accurate information</li>
-        <li>One account per person is permitted</li>
-        <li>We reserve the right to suspend accounts that violate these terms</li>
-      </ul>
-    </section>
+      <section>
+        <h2>2. USE OF THE GAME</h2>
+        <p>You may use the Game for personal, non-commercial entertainment purposes only. You agree <strong>not</strong> to:</p>
+        <ul>
+          <li>Cheat, hack, or manipulate game data or leaderboards</li>
+          <li>Use automated bots or scripts to interact with the Game</li>
+          <li>Attempt to reverse-engineer or modify the Game</li>
+          <li>Use offensive, harmful, or inappropriate usernames</li>
+          <li>Violate any applicable laws or regulations while using the Game</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>4. LEADERBOARDS & FAIR PLAY</h2>
-      <p>LOGICZ features global leaderboards. We reserve the right to remove scores or accounts that appear to be the result of cheating, exploits, or unfair play without prior notice.</p>
-    </section>
+      <section>
+        <h2>3. USER ACCOUNTS</h2>
+        <p>You may play anonymously without creating an account. If you create an account:</p>
+        <ul>
+          <li>You are responsible for maintaining the security of your password</li>
+          <li>You agree to provide accurate information</li>
+          <li>One account per person is permitted</li>
+          <li>We reserve the right to suspend accounts that violate these terms</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>5. INTELLECTUAL PROPERTY</h2>
-      <p>All content in the Game, including but not limited to graphics, sound effects, music, and code, is owned by or licensed to LOGICZ. You may not reproduce or distribute any part of the Game without permission.</p>
-    </section>
+      <section>
+        <h2>4. LEADERBOARDS & FAIR PLAY</h2>
+        <p>LOGICZ features global leaderboards. We reserve the right to remove scores or accounts that appear to be the result of cheating, exploits, or unfair play without prior notice.</p>
+      </section>
 
-    <section>
-      <h2>6. DISCLAIMER OF WARRANTIES</h2>
-      <p>The Game is provided "as is" without warranty of any kind. We do not guarantee that the Game will be available at all times, error-free, or uninterrupted.</p>
-    </section>
+      <section>
+        <h2>5. INTELLECTUAL PROPERTY</h2>
+        <p>All content in the Game — including graphics, sound effects, music, and code — is owned by or licensed to LOGICZ. You may not reproduce or distribute any part of the Game without written permission.</p>
+      </section>
 
-    <section>
-      <h2>7. LIMITATION OF LIABILITY</h2>
-      <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising out of your use of the Game.</p>
-    </section>
+      <section>
+        <h2>6. DISCLAIMER OF WARRANTIES</h2>
+        <p>The Game is provided "as is" without warranty of any kind. We do not guarantee that the Game will be available at all times, error-free, or uninterrupted.</p>
+      </section>
 
-    <section>
-      <h2>8. CHANGES TO TERMS</h2>
-      <p>We may update these Terms at any time. Continued use of the Game after changes constitutes acceptance of the new Terms.</p>
-    </section>
+      <section>
+        <h2>7. LIMITATION OF LIABILITY</h2>
+        <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Game.</p>
+      </section>
 
-    <section>
-      <h2>9. CONTACT</h2>
-      <p>For questions about these Terms, contact us at: <a href="mailto:aykuterd@gmail.com">aykuterd@gmail.com</a></p>
-    </section>
+      <section>
+        <h2>8. CHANGES TO TERMS</h2>
+        <p>We may update these Terms at any time. Continued use of the Game after changes are published constitutes acceptance of the new Terms.</p>
+      </section>
 
-    <hr style="border-color: rgba(239,230,221,0.1); margin: 40px 0 32px;" />
+      <section>
+        <h2>9. CONTACT</h2>
+        <p>For questions about these Terms: <a href="mailto:aykuterd@gmail.com">aykuterd@gmail.com</a></p>
+      </section>
+    </div>
 
-    <div class="page-title" style="font-size: 1.5rem; margin-bottom: 8px;">KULLANIM KOŞULLARI</div>
-    <div class="last-updated">Son güncelleme: Şubat 2024</div>
+    <!-- ═══ TURKISH ═══ -->
+    <div data-lang="tr">
+      <div class="page-title">KULLANIM KOŞULLARI</div>
+      <div class="last-updated">Son güncelleme: Şubat 2024</div>
 
-    <section>
-      <h2>1. KOŞULLARIN KABULÜ</h2>
-      <p>LOGICZ – Blok Bulmaca'yı ("Oyun") indirerek, yükleyerek veya kullanarak bu Kullanım Koşulları'na uymayı kabul etmiş olursunuz.</p>
-    </section>
+      <section>
+        <h2>1. KOŞULLARIN KABULÜ</h2>
+        <p>LOGICZ – Blok Bulmaca'yı ("Oyun") indirerek, yükleyerek veya kullanarak bu Kullanım Koşulları'na uymayı kabul etmiş olursunuz. Kabul etmiyorsanız lütfen Oyunu kullanmayın.</p>
+      </section>
 
-    <section>
-      <h2>2. OYUNUN KULLANIMI</h2>
-      <p>Oyunu yalnızca kişisel, ticari olmayan eğlence amaçlı kullanabilirsiniz. Aşağıdakileri yapmamayı kabul edersiniz:</p>
-      <ul>
-        <li>Oyun verilerini veya liderlik tablolarını hile, hack veya manipüle etmek</li>
-        <li>Otomatik botlar veya betikler kullanmak</li>
-        <li>Oyunu tersine mühendislik veya değiştirmeye çalışmak</li>
-        <li>Saldırgan, zararlı veya uygunsuz kullanıcı adları kullanmak</li>
-        <li>Geçerli yasaları ihlal etmek</li>
-      </ul>
-    </section>
+      <section>
+        <h2>2. OYUNUN KULLANIMI</h2>
+        <p>Oyunu yalnızca kişisel, ticari olmayan eğlence amaçlı kullanabilirsiniz. Aşağıdakileri yapmamayı kabul edersiniz:</p>
+        <ul>
+          <li>Oyun verilerini veya liderlik tablolarını hile, hack veya manipüle etmek</li>
+          <li>Oyunla etkileşim için otomatik botlar veya betikler kullanmak</li>
+          <li>Oyunu tersine mühendislik veya değiştirmeye çalışmak</li>
+          <li>Saldırgan, zararlı veya uygunsuz kullanıcı adları kullanmak</li>
+          <li>Oyunu kullanırken geçerli yasaları ihlal etmek</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>3. KULLANICI HESAPLARI</h2>
-      <p>Hesap oluşturmadan anonim olarak oynayabilirsiniz. Hesap oluşturursanız şifrenizin güvenliğini korumakla yükümlüsünüz. Bu koşulları ihlal eden hesapları askıya alma hakkımızı saklı tutarız.</p>
-    </section>
+      <section>
+        <h2>3. KULLANICI HESAPLARI</h2>
+        <p>Hesap oluşturmadan anonim olarak oynayabilirsiniz. Hesap oluşturursanız:</p>
+        <ul>
+          <li>Şifrenizin güvenliğini korumakla yükümlüsünüz</li>
+          <li>Doğru bilgi vermeyi kabul edersiniz</li>
+          <li>Kişi başı bir hesap açılabilir</li>
+          <li>Bu koşulları ihlal eden hesapları askıya alma hakkımızı saklı tutarız</li>
+        </ul>
+      </section>
 
-    <section>
-      <h2>4. LİDERLİK TABLOSU & ADIL OYUN</h2>
-      <p>Hile veya exploit sonucu oluşan skorları veya hesapları önceden bildirimde bulunmaksızın kaldırma hakkımızı saklı tutarız.</p>
-    </section>
+      <section>
+        <h2>4. LİDERLİK TABLOSU & ADIL OYUN</h2>
+        <p>Hile veya exploit sonucu oluştuğu değerlendirilen skorları veya hesapları önceden bildirimde bulunmaksızın kaldırma hakkımızı saklı tutarız.</p>
+      </section>
 
-    <section>
-      <h2>5. FİKRİ MÜLKİYET</h2>
-      <p>Oyundaki tüm içerikler bize ait veya lisanslıdır. İzin olmaksızın oyunun hiçbir bölümünü kopyalayamaz veya dağıtamazsınız.</p>
-    </section>
+      <section>
+        <h2>5. FİKRİ MÜLKİYET</h2>
+        <p>Grafik, ses efekti, müzik ve kod dahil oyundaki tüm içerik bize ait veya lisanslıdır. Yazılı izin olmaksızın oyunun hiçbir bölümünü kopyalayamaz veya dağıtamazsınız.</p>
+      </section>
 
-    <section>
-      <h2>6. SORUMLULUK REDDİ</h2>
-      <p>Oyun "olduğu gibi" sunulmaktadır. Oyunun her zaman hatasız veya kesintisiz kullanılabilir olacağını garanti etmiyoruz.</p>
-    </section>
+      <section>
+        <h2>6. GARANTİ REDDİ</h2>
+        <p>Oyun "olduğu gibi" sunulmaktadır. Oyunun her zaman, hatasız veya kesintisiz kullanılabilir olacağını garanti etmiyoruz.</p>
+      </section>
 
-    <section>
-      <h2>7. İLETİŞİM</h2>
-      <p>Bu Koşullar hakkında sorularınız için: <a href="mailto:aykuterd@gmail.com">aykuterd@gmail.com</a></p>
-    </section>
+      <section>
+        <h2>7. SORUMLULUK SINIRLAMASI</h2>
+        <p>Yürürlükteki yasaların izin verdiği azami ölçüde, Oyunun kullanımından kaynaklanan dolaylı, arızi veya sonuç olarak ortaya çıkan zararlardan sorumlu değiliz.</p>
+      </section>
+
+      <section>
+        <h2>8. KOŞULLARIN DEĞİŞTİRİLMESİ</h2>
+        <p>Bu Koşulları istediğimiz zaman güncelleyebiliriz. Değişiklikler yayınlandıktan sonra Oyunu kullanmaya devam etmek yeni Koşulları kabul ettiğiniz anlamına gelir.</p>
+      </section>
+
+      <section>
+        <h2>9. İLETİŞİM</h2>
+        <p>Bu Koşullar hakkında sorularınız için: <a href="mailto:aykuterd@gmail.com">aykuterd@gmail.com</a></p>
+      </section>
+    </div>
+
   </div>
 
   <footer>&copy; 2024 LOGICZ. All rights reserved.</footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+      localStorage.setItem('logicz-lang', lang);
+    }
+    const saved = localStorage.getItem('logicz-lang') ||
+      (navigator.language.startsWith('tr') ? 'tr' : 'en');
+    setLang(saved);
+  </script>
 </body>
 </html>
