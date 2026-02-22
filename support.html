@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LOGICZ Support – Get help, find answers, and contact us." />
+  <title>LOGICZ – Support</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --brown: #8B5A2B;
+      --dark: #1a0f0a;
+      --panel: #2b1b17;
+      --cream: #efe6dd;
+      --gold: #DAA520;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,15,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(239,230,221,0.12);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav .logo {
+      font-size: 1.4rem; font-weight: 900; letter-spacing: 5px;
+      text-decoration: none; color: var(--cream);
+    }
+    nav .nav-right { display: flex; align-items: center; gap: 20px; }
+    nav a.nav-link { color: rgba(239,230,221,0.5); text-decoration: none; font-size: 0.82rem; letter-spacing: 1px; transition: color 0.2s; }
+    nav a.nav-link:hover { color: var(--cream); }
+
+    .lang-toggle {
+      display: flex;
+      background: rgba(239,230,221,0.08);
+      border: 1.5px solid rgba(239,230,221,0.18);
+      border-radius: 30px; overflow: hidden;
+    }
+    .lang-toggle button {
+      background: none; border: none; color: rgba(239,230,221,0.5);
+      padding: 6px 16px; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
+    }
+    .lang-toggle button.active { background: rgba(239,230,221,0.18); color: var(--cream); }
+
+    /* HERO */
+    .hero {
+      padding: 140px 24px 60px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(139,90,43,0.3) 0%, transparent 65%),
+        var(--dark);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(218,165,32,0.15);
+      border: 1px solid rgba(218,165,32,0.4);
+      color: var(--gold);
+      font-size: 0.75rem; font-weight: 800; letter-spacing: 3px;
+      padding: 6px 18px; border-radius: 30px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900; letter-spacing: 6px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: rgba(239,230,221,0.6);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* CONTACT CARD */
+    .contact-card {
+      background: rgba(218,165,32,0.08);
+      border: 1.5px solid rgba(218,165,32,0.3);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .contact-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .contact-card h2 {
+      font-size: 1rem; font-weight: 900; letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+    .contact-card p {
+      font-size: 0.9rem; color: rgba(239,230,221,0.6);
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .contact-card a.email-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #8B5A2B, #DAA520);
+      color: #1a0f0a;
+      text-decoration: none;
+      padding: 13px 32px;
+      border-radius: 12px;
+      font-weight: 900; font-size: 0.9rem; letter-spacing: 2px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(139,90,43,0.4);
+    }
+    .contact-card a.email-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(139,90,43,0.6); }
+
+    /* FAQ */
+    .faq-title {
+      font-size: 1.1rem; font-weight: 900; letter-spacing: 4px;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(239,230,221,0.1);
+    }
+    .faq-item {
+      border: 1.5px solid rgba(239,230,221,0.08);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: rgba(239,230,221,0.18); }
+    .faq-question {
+      width: 100%; background: rgba(239,230,221,0.04);
+      border: none; color: var(--cream);
+      padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; text-align: left;
+      font-size: 0.92rem; font-weight: 700; letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: rgba(239,230,221,0.07); }
+    .faq-question .arrow {
+      font-size: 0.7rem; color: var(--gold);
+      transition: transform 0.25s; flex-shrink: 0; margin-left: 12px;
+    }
+    .faq-question.open .arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+      padding: 0 24px;
+    }
+    .faq-answer.open { max-height: 300px; padding: 0 24px 20px; }
+    .faq-answer p {
+      font-size: 0.88rem;
+      color: rgba(239,230,221,0.65);
+      line-height: 1.8;
+      padding-top: 14px;
+      border-top: 1px solid rgba(239,230,221,0.07);
+    }
+    .faq-answer a { color: var(--gold); }
+
+    /* BACK LINK */
+    .back-section {
+      text-align: center;
+      margin-top: 60px;
+    }
+    .back-link {
+      color: rgba(239,230,221,0.4);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cream); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(239,230,221,0.08);
+      padding: 28px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 14px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    footer span { font-size: 0.8rem; color: rgba(239,230,221,0.3); }
+    footer .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    footer a { color: rgba(239,230,221,0.4); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    footer a:hover { color: var(--cream); }
+
+    [data-lang] { display: none; }
+
+    @media (max-width: 600px) {
+      nav a.nav-link { display: none; }
+      footer .footer-links { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">LOGICZ</a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-link" data-lang="en">Home</a>
+      <a href="index.html" class="nav-link" data-lang="tr">Ana Sayfa</a>
+      <div class="lang-toggle">
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+        <button id="btn-tr" onclick="setLang('tr')">TR</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge" data-lang="en">HELP CENTER</div>
+    <div class="hero-badge" data-lang="tr">DESTEK MERKEZİ</div>
+    <h1 data-lang="en">SUPPORT</h1>
+    <h1 data-lang="tr">DESTEK</h1>
+    <p data-lang="en">We're here to help. Browse the frequently asked questions below or reach out to us directly.</p>
+    <p data-lang="tr">Yardım etmek için buradayız. Aşağıdaki sık sorulan soruları inceleyin veya bize doğrudan ulaşın.</p>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- CONTACT -->
+    <div class="contact-card">
+      <div class="icon">✉️</div>
+      <h2 data-lang="en">CONTACT US</h2>
+      <h2 data-lang="tr">BİZE ULAŞIN</h2>
+      <p data-lang="en">Can't find what you're looking for? Send us an email and we'll get back to you as soon as possible.</p>
+      <p data-lang="tr">Aradığınızı bulamadınız mı? Bize e-posta gönderin, en kısa sürede geri dönelim.</p>
+      <a href="#" class="email-btn" onclick="openMail(); return false;" data-lang="en">Send Email</a>
+      <a href="#" class="email-btn" onclick="openMail(); return false;" data-lang="tr">E-posta Gonder</a>
+    </div>
+
+    <!-- FAQ EN -->
+    <div data-lang="en">
+      <p class="faq-title">FREQUENTLY ASKED QUESTIONS</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I play Logicz?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Drag blocks from the tray onto the 9×9 board. Fill a complete row, column, or 3×3 block to clear it and earn points. The game ends when no more pieces can be placed.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What game modes are available?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Logicz offers four modes: Classic (endless, high score), Zen (no game over, relaxed), Time Attack (3-minute countdown with combo time bonuses), and Target Score (reach a goal in Easy / Medium / Hard / Expert difficulty).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is the Daily Challenge?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>A new puzzle is available every day. Complete it to earn up to 3 stars. Play 7 days in a row to become Weekly Champion, or 30 days in a row for Monthly Legend status.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I unlock themes and badges?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Themes and badges are unlocked by reaching score milestones, completing combos and streaks, finishing daily challenges, and playing specific game modes. Check the Achievements screen in the app to track your progress.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How does the leaderboard work?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>The global leaderboard ranks players by their best Target Score results. Sign in to save your progress and appear on the board. Rankings update in real time.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          My progress was lost. What should I do?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Make sure you are signed in with the same account on your device. If the issue persists, please <a href="#" onclick="openMail(); return false;">contact us</a> with your device model and iOS version.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I delete my account?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>You can request account deletion from within the app via Settings, or visit our <a href="delete-account.html">Delete Account</a> page for step-by-step instructions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is Logicz free to play?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes, Logicz is completely free to download and play with no ads.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ TR -->
+    <div data-lang="tr">
+      <p class="faq-title">SIK SORULAN SORULAR</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Logicz nasıl oynanır?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tepside yer alan blokları 9x9 tahtaya sürükleyin. Bir satırı, sütunu veya 3x3 bloğu tamamen doldurun, temizleyin ve puan kazanın. Hiç parça yerleştirilemediğinde oyun biter.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Hangi oyun modları mevcut?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Logicz dört mod sunar: Klasik (sonsuz, yüksek skor), Zen (oyun bitmez, rahat tempo), Zamana Karsi (kombolarla sureyi uzatan 3 dakikalik sayac) ve Hedef Skor (Kolay / Orta / Zor / Uzman seviyelerinde hedefe ulasin).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Gunluk Gorev nedir?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Her gun yeni bir bulmaca sunulur. Tamamlayarak 3 yildiza kadar kazanabilirsiniz. 7 gun ust uste oynayarak Haftalik Sampiyon, 30 gun ust uste oynayarak Aylik Efsane olun.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Temalar ve rozetler nasil acilir?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Temalar ve rozetler; belirli skor esiklerine ulasarak, kombo ve seriler yaparak, gunluk gorevleri tamamlayarak ve farkli modlari oynayarak acilir. Ilerlemenizi takip etmek icin uygulama icerisindeki Basarilar ekranina bakin.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Liderlik tablosu nasil calisir?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Global liderlik tablosu, oyunculari en iyi Hedef Skor sonuclarina gore siralar. Ilerlemenizi kaydetmek ve tabloda yer almak icin hesabinizla giris yapin. Siralama gercek zamanli guncellenir.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Ilerlememim kayboldu, ne yapmaliyim?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Cihazinizda ayni hesapla giris yaptiginizdan emin olun. Sorun devam ederse cihaz modeliniz ve iOS surumunuzla birlikte <a href="#" onclick="openMail(); return false;">bize yazin</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Hesabimi nasil silerim?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Hesap silme islemini uygulama icinde Ayarlar menusunden baslatin ya da adim adim talimatlar icin <a href="delete-account.html">Hesap Sil</a> sayfamizi ziyaret edin.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Logicz ucretsiz mi?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Evet, Logicz reklamsiz olarak tamamen ucretsiz indirilebilir ve oynanabilir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-section">
+      <a href="index.html" class="back-link" data-lang="en">← BACK TO HOME</a>
+      <a href="index.html" class="back-link" data-lang="tr">← ANA SAYFAYA DON</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2024 LOGICZ. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html" data-lang="en">Privacy Policy</a>
+      <a href="privacy-policy.html" data-lang="tr">Gizlilik Politikasi</a>
+      <a href="terms-of-service.html" data-lang="en">Terms of Service</a>
+      <a href="terms-of-service.html" data-lang="tr">Kullanim Kosullari</a>
+      <a href="delete-account.html" data-lang="en">Delete Account</a>
+      <a href="delete-account.html" data-lang="tr">Hesap Sil</a>
+    </div>
+  </footer>
+
+  <script>
+    function openMail() {
+      const u = ['aykuterd', 'gmail.com'].join('@');
+      window.location.href = 'mailto:' + u;
+    }
+
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang
+          ? (el.tagName === 'SPAN' || el.tagName === 'A' ? 'inline' : 'block')
+          : 'none';
+      });
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+      localStorage.setItem('logicz-lang', lang);
+    }
+
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) {
+        answer.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    const saved = localStorage.getItem('logicz-lang') ||
+      (navigator.language.startsWith('tr') ? 'tr' : 'en');
+    setLang(saved);
+  </script>
+</body>
+</html>
